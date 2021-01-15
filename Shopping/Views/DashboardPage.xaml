@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            xmlns:plugin="clr-namespace:Plugin.Badge.Abstractions;assembly=Plugin.Badge.Abstractions"
+            xmlns:view="clr-namespace:Shopping.Views"
+            xmlns:base="clr-namespace:Shopping.Views.Base"
+            xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
+            BarBackgroundColor="{StaticResource White}"
+            BarTextColor="{StaticResource DarkGray}"
+            android:TabbedPage.ToolbarPlacement="Bottom"
+            android:TabbedPage.BarItemColor="{StaticResource DarkGray}"
+            NavigationPage.HasNavigationBar="False"
+            android:TabbedPage.IsSmoothScrollEnabled="True"
+            android:TabbedPage.BarSelectedItemColor="{StaticResource PrimaryBlue}"
+            x:Class="Shopping.Views.DashboardPage">
+
+   <base:NavigationView IconImageSource="File.png">
+      <x:Arguments>
+         <view:HomePage />
+      </x:Arguments>
+   </base:NavigationView>
+   <base:NavigationView IconImageSource="Heart.png"
+                        plugin:TabBadge.BadgeText="23"
+                        plugin:TabBadge.BadgeColor="{StaticResource DarkGray}">
+      <x:Arguments>
+         <view:FavouritesPage />
+      </x:Arguments>
+   </base:NavigationView>
+   <base:NavigationView IconImageSource="ShoppingCart.png"
+                        plugin:TabBadge.BadgeColor="{StaticResource PrimaryBlue}"
+                        plugin:TabBadge.BadgeText="1">
+      <x:Arguments>
+         <view:CartPage />
+      </x:Arguments>
+   </base:NavigationView>
+   <base:NavigationView IconImageSource="Search.png">
+      <x:Arguments>
+         <view:SearchPage />
+      </x:Arguments>
+   </base:NavigationView>
+
+</TabbedPage>

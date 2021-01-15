@@ -1,0 +1,209 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<base:BasePage xmlns="http://xamarin.com/schemas/2014/forms"
+               xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+               xmlns:base="clr-namespace:Shopping.Views.Base"
+               x:Class="Shopping.Views.CartPage"
+               BackgroundColor="{StaticResource White}">
+   <ContentPage.Content>
+      <Grid Padding="20"
+            BackgroundColor="{StaticResource White}"
+            RowDefinitions="auto,auto,10,auto,auto,*,10,auto,2">
+         <Grid Grid.Row="0"
+               ColumnDefinitions="*,auto">
+            <Label Grid.Column="0"
+                   Text="Cart"
+                   VerticalTextAlignment="Center"
+                   FontSize="{StaticResource Large}" />
+            <Frame CornerRadius="20"
+                   Padding="7"
+                   Grid.Column="1"
+                   BackgroundColor="{StaticResource PrimaryOrange}"
+                   WidthRequest="30"
+                   IsClippedToBounds="True">
+               <Image Source="User.png"
+                      HeightRequest="30"
+                      WidthRequest="30"
+                      BackgroundColor="{StaticResource PrimaryOrange}" />
+            </Frame>
+         </Grid>
+         <BoxView Grid.Row='1' />
+         <Frame Grid.Row="3"
+                CornerRadius="5"
+                BackgroundColor="{StaticResource LightGray}"
+                HeightRequest="40">
+            <Grid ColumnDefinitions="auto,10,*,auto">
+               <Frame CornerRadius="20"
+                      Padding="7"
+                      Grid.Column="0"
+                      BackgroundColor="{StaticResource SecondaryOrange}"
+                      WidthRequest="30"
+                      IsClippedToBounds="True">
+                  <Image Source="Gift.png"
+                         HeightRequest="30"
+                         WidthRequest="30"
+                         BackgroundColor="{StaticResource SecondaryOrange}" />
+               </Frame>
+               <Label Grid.Column="2">
+                  <Label.FormattedText>
+                     <FormattedString>
+                        <Span Text=" -10%  "
+                              FontSize="{StaticResource Medium}"
+                              TextColor="{StaticResource PrimaryBlue}"
+                              FontFamily="{StaticResource SemiBoldFont}" />
+                        <Span Text="Enjoy Student Discount"
+                              TextColor="{StaticResource DarkGray}"
+                              FontSize="{StaticResource Small}" />
+                     </FormattedString>
+                  </Label.FormattedText>
+               </Label>
+               <Label Grid.Column="3"
+                      FontSize="{StaticResource Micro}"
+                      HorizontalTextAlignment="Center"
+                      VerticalTextAlignment="Center"
+                      TextColor="{StaticResource PrimaryBlue}"
+                      Text="GIVE A GIFT" />
+
+            </Grid>
+         </Frame>
+         <Ellipse Grid.Row="3"
+                  HorizontalOptions="Start"
+                  TranslationY="-60"
+                  TranslationX="250"
+                  Fill="white"
+                  VerticalOptions="End"
+                  HeightRequest="26"
+                  WidthRequest="26"
+                  StrokeThickness="0" />
+         <Ellipse Grid.Row="4"
+                  HorizontalOptions="Start"
+                  TranslationY="-20"
+                  TranslationX="250"
+                  Fill="white"
+                  VerticalOptions="End"
+                  HeightRequest="26"
+                  WidthRequest="26"
+                  StrokeThickness="0" />
+
+         <CollectionView x:Name="collectionView"
+                         Grid.Row="5"
+                         HorizontalOptions="CenterAndExpand">
+            <CollectionView.ItemTemplate>
+               <DataTemplate>
+                  <SwipeView>
+                     <SwipeView.RightItems>
+                        <SwipeItems>
+                           <SwipeItem BackgroundColor="#FF3D00"
+                                      Command="{Binding Source={x:Reference collectionView}, Path=BindingContext.DeleteCommand}"
+                                      CommandParameter="{Binding}"
+                                      IconImageSource="Trash.png" />
+                        </SwipeItems>
+                     </SwipeView.RightItems>
+
+                     <Grid ColumnDefinitions="auto,*,auto"
+                           Padding="0,0,0,10">
+                        <Frame Grid.Column="0"
+                               Padding="0"
+                               HasShadow="False"
+                               CornerRadius="8">
+                           <Image Aspect="AspectFill"
+                                  HeightRequest="100"
+                                  Source="{Binding Image}"
+                                  WidthRequest="120" />
+                        </Frame>
+
+                        <Grid Grid.Column="1"
+                              RowSpacing="0"
+                              RowDefinitions="auto,5,auto,auto,auto,auto">
+
+                           <Label FontSize="{StaticResource Small}"
+                                  Grid.Row="0"
+                                  FontFamily="{StaticResource SemiBoldFont}"
+                                  HorizontalTextAlignment="Start"
+                                  VerticalTextAlignment="Center"
+                                  Text="{Binding Name}" />
+
+                           <Label Grid.Row="2"
+                                  FontSize="{StaticResource Micro}"
+                                  HorizontalTextAlignment="Start"
+                                  VerticalTextAlignment="Center"
+                                  Text="{Binding Brand}"
+                                  TextColor="{StaticResource DarkGray}" />
+                           <Label Grid.Row="3"
+                                  FontSize="{StaticResource Micro}"
+                                  HorizontalTextAlignment="Start"
+                                  VerticalTextAlignment="Center">
+                              <Label.FormattedText>
+                                 <FormattedString>
+                                    <Span Text="Color: "
+                                          TextColor="{StaticResource DarkGray}" />
+                                    <Span Text="&#xf111;"
+                                          FontFamily="{StaticResource FontAwesomeSolid}"
+                                          FontSize="10"
+                                          TextColor="{Binding Color}" />
+                                 </FormattedString>
+                              </Label.FormattedText>
+                           </Label>
+                           <Label Grid.Row="4"
+                                  FontSize="{StaticResource Micro}"
+                                  HorizontalTextAlignment="Start"
+                                  VerticalTextAlignment="Center"
+                                  Text="{Binding Size,StringFormat='Size: {0}'}"
+                                  TextColor="{StaticResource DarkGray}" />
+                           <Label Grid.Row="5"
+                                  FontSize="{StaticResource Micro}"
+                                  HorizontalTextAlignment="Start"
+                                  VerticalTextAlignment="Center"
+                                  Text="{Binding Quantity,StringFormat='Quantity: {0}'}"
+                                  TextColor="{StaticResource DarkGray}" />
+
+                        </Grid>
+                        <StackLayout Grid.Column="2">
+                           <Label FontSize="{StaticResource Micro}"
+                                  HorizontalTextAlignment="Center"
+                                  VerticalTextAlignment="Center"
+                                  Text="{Binding Price}"
+                                  TextColor="{StaticResource PrimaryBlue}" />
+
+                        </StackLayout>
+                     </Grid>
+
+                  </SwipeView>
+
+
+               </DataTemplate>
+            </CollectionView.ItemTemplate>
+         </CollectionView>
+
+         <Frame Grid.Row="7"
+                CornerRadius="5"
+                BackgroundColor="{StaticResource LightGray}"
+                HeightRequest="40">
+            <Grid ColumnDefinitions="*,auto"
+                  RowDefinitions="*,*">
+               <Label Text="Total price"
+                      Grid.Row="0"
+                      Grid.Column="0"
+                      FontFamily="{StaticResource SemiBoldFont}" />
+               <Label Text="VAT included"
+                      Grid.Row="1"
+                      Grid.Column="0"
+                      TextColor="{StaticResource DarkGray}" />
+               <Frame CornerRadius="5"
+                      Padding="7"
+                      BackgroundColor="{StaticResource PrimaryBlue}"
+                      Grid.Column="1"
+                      Grid.Row="0"
+                      Grid.RowSpan="2">
+                  <Label Text="€ 430"
+                         HorizontalTextAlignment="Center"
+                         VerticalTextAlignment="Center"
+                         TextColor="{StaticResource White}" />
+               </Frame>
+            </Grid>
+            <Frame.GestureRecognizers>
+               <TapGestureRecognizer Tapped="CheckOutTapped" />
+            </Frame.GestureRecognizers>
+         </Frame>
+      </Grid>
+   </ContentPage.Content>
+</base:BasePage>

@@ -1,0 +1,283 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<base:BasePage xmlns="http://xamarin.com/schemas/2014/forms"
+               xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+               xmlns:base="clr-namespace:Shopping.Views.Base"
+               x:Class="Shopping.Views.CheckoutPage">
+   <ContentPage.Content>
+      <ScrollView>
+         <Grid Padding="20"
+               RowDefinitions="auto,2,auto,8,auto,8,auto,*">
+            <Grid Grid.Row="0"
+                  ColumnDefinitions="*,auto">
+               <Label Grid.Column="0"
+                      Text="Checkout"
+                      VerticalTextAlignment="Center"
+                      FontSize="{StaticResource Large}" />
+               <Frame CornerRadius="20"
+                      Padding="7"
+                      Grid.Column="1"
+                      BackgroundColor="LightGray"
+                      WidthRequest="20"
+                      IsClippedToBounds="True">
+                  <Image Source="Close.png"
+                         HeightRequest="20"
+                         WidthRequest="20"
+                         BackgroundColor="LightGray" />
+                  <Frame.GestureRecognizers>
+                     <TapGestureRecognizer Tapped="ClosedTapped" />
+                  </Frame.GestureRecognizers>
+               </Frame>
+            </Grid>
+            <BoxView Grid.Row='2' />
+
+
+            <Frame Grid.Row="4"
+                   CornerRadius="20"
+                   Padding="0"
+                   HasShadow="False"
+                   BackgroundColor="{StaticResource LightGray}">
+               <Grid ColumnDefinitions="*,*,*">
+
+                  <Frame x:Name="ShipmentFrame"
+                         CornerRadius="20"
+                         Padding="10"
+                         Grid.Column="0"
+                         BackgroundColor="{StaticResource PrimaryOrange}">
+                     <Label  x:Name="ShipmentLabel"
+                             Text="Shipment"
+                             HorizontalTextAlignment="Center"
+                             VerticalTextAlignment="Center"
+                             TextColor="{StaticResource White}" />
+                     <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="ShipmentClicked" />
+                     </Frame.GestureRecognizers>
+                  </Frame>
+                  <Frame x:Name="PaymentFrame"
+                         CornerRadius="20"
+                         Padding="10"
+                         Grid.Column="1"
+                         BackgroundColor="Transparent">
+                     <Label x:Name="PaymentLabel"
+                            Grid.Column="1"
+                            Text="Payment"
+                            HorizontalTextAlignment="Center"
+                            VerticalTextAlignment="Center"
+                            TextColor="{StaticResource DarkGray}" />
+                     <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="PaymentClicked" />
+                     </Frame.GestureRecognizers>
+                  </Frame>
+                  <Frame x:Name="SummaryFrame"
+                         CornerRadius="20"
+                         Padding="10"
+                         Grid.Column="2"
+                         BackgroundColor="Transparent">
+                     <Label   x:Name="SummaryLabel"
+                              Text="Summary"
+                              Grid.Column="2"
+                              HorizontalTextAlignment="Center"
+                              VerticalTextAlignment="Center"
+                              TextColor="{StaticResource DarkGray}" />
+                     <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="SummaryClicked" />
+                     </Frame.GestureRecognizers>
+                  </Frame>
+               </Grid>
+            </Frame>
+
+            <Grid x:Name="ShipmentGrid"
+                  Grid.Row="6"
+                  RowDefinitions="auto,auto,1,auto,auto,auto,auto,5,auto,5,auto,5,auto,5,auto,*,auto"
+                  ColumnDefinitions="*,auto">
+               <Label Grid.Row="0"
+                      Grid.Column="0"
+                      Text="Delivery address"
+                      VerticalTextAlignment="Center"
+                      FontSize="{StaticResource Medium}" />
+               <BoxView Grid.Row='1'
+                        Grid.Column="0"
+                        Grid.ColumnSpan="2" />
+               <Label Grid.Row="3"
+                      Grid.Column="0"
+                      Text="Guathier Drewitt"
+                      VerticalTextAlignment="Center" />
+               <Label Grid.Row="4"
+                      Grid.Column="0"
+                      Text="7303 W Alexander Rd"
+                      VerticalTextAlignment="Center" />
+               <Label Grid.Row="5"
+                      Grid.Column="0"
+                      Text="Las Vegas, NV 89129"
+                      VerticalTextAlignment="Center" />
+               <Label Grid.Row="6"
+                      Grid.Column="0"
+                      Text="USA"
+                      VerticalTextAlignment="Center" />
+               <BoxView Grid.Row='8'
+                        Grid.Column="0"
+                        Grid.ColumnSpan="2" />
+               <Image Source="EnCircle.png"
+                      Grid.Row="0"
+                      HorizontalOptions="CenterAndExpand"
+                      VerticalOptions="CenterAndExpand"
+                      WidthRequest="30"
+                      HeightRequest="30"
+                      Grid.Column="1"
+                      Grid.RowSpan="9" />
+               <Label Grid.Row="10"
+                      Grid.Column="0"
+                      Text="New address"
+                      VerticalTextAlignment="Center" />
+               <Image Source="HallowCircle.png"
+                      Grid.Row="10"
+                      HorizontalOptions="CenterAndExpand"
+                      VerticalOptions="CenterAndExpand"
+                      WidthRequest="30"
+                      HeightRequest="30"
+                      Grid.Column="1" />
+               <Frame  Grid.Row="12"
+                       Grid.Column="0"
+                       Padding="0"
+                       Grid.ColumnSpan="2"
+                       CornerRadius="5"
+                       BorderColor="{StaticResource PrimaryOrange}"
+                       BackgroundColor="{StaticResource LightGray}"
+                       HeightRequest="95">
+                  <Grid ColumnDefinitions="10,auto,10,*,auto"
+                        RowDefinitions="10,*,*,*,10"
+                        RowSpacing="0">
+                     <Frame CornerRadius="20"
+                            Padding="7"
+                            Grid.Column="1"
+                            Grid.Row="1"
+                            Grid.RowSpan="3"
+                            BackgroundColor="{StaticResource SecondaryOrange}"
+                            WidthRequest="30"
+                            HorizontalOptions="CenterAndExpand"
+                            VerticalOptions="CenterAndExpand"
+                            IsClippedToBounds="True">
+                        <Image Source="Truck.png"
+                               HeightRequest="30"
+                               WidthRequest="30"
+                               BackgroundColor="{StaticResource SecondaryOrange}" />
+                     </Frame>
+                     <Label Grid.Row="1"
+                            Text="Free shipment"
+                            VerticalTextAlignment="Center"
+                            Grid.Column="3" />
+                     <Label Grid.Row="2"
+                            Text="Free shipment over 100€"
+                            VerticalTextAlignment="End"
+                            TextColor="{StaticResource DarkGray}"
+                            Grid.Column="3" />
+                     <Label Grid.Row="3"
+                            Text="Deliver time 2-3 days"
+                            VerticalTextAlignment="Start"
+                            TextColor="{StaticResource DarkGray}"
+                            Grid.Column="3" />
+                     <Label Grid.Row="2"
+                            Padding="0,0,10,0"
+                            Grid.RowSpan="2"
+                            FontSize="{StaticResource Large}"
+                            Text="€ 0"
+                            VerticalTextAlignment="Center"
+                            HorizontalTextAlignment="Center"
+                            TextColor="{StaticResource PrimaryBlue}"
+                            Grid.Column="4" />
+                     <Image Source="Tick.png"
+                            HorizontalOptions="EndAndExpand"
+                            VerticalOptions="StartAndExpand"
+                            Grid.Row="0"
+                            HeightRequest="20"
+                            Grid.RowSpan="2"
+                            Grid.Column="4" />
+                  </Grid>
+               </Frame>
+               <Frame  Grid.Row="14"
+                       Grid.Column="0"
+                       Grid.ColumnSpan="2"
+                       CornerRadius="5"
+                       Padding="0"
+                       BackgroundColor="{StaticResource LightGray}"
+                       HeightRequest="80">
+                  <Grid ColumnDefinitions="10,auto,10,*,auto"
+                        RowDefinitions="10,*,*,*,10"
+                        RowSpacing="0">
+                     <Frame CornerRadius="20"
+                            Padding="7"
+                            Grid.Column="1"
+                            Grid.Row="1"
+                            Grid.RowSpan="2"
+                            BackgroundColor="{StaticResource SecondaryOrange}"
+                            WidthRequest="30"
+                            HorizontalOptions="CenterAndExpand"
+                            VerticalOptions="CenterAndExpand"
+                            IsClippedToBounds="True">
+                        <Image Source="Truck.png"
+                               HeightRequest="30"
+                               WidthRequest="30"
+                               BackgroundColor="{StaticResource SecondaryOrange}" />
+                     </Frame>
+                     <Label Grid.Row="1"
+                            Text="Get Premium Shipment"
+                            VerticalTextAlignment="Center"
+                            Grid.Column="3" />
+                     <Label Grid.Row="2"
+                            Text="Deliver time 24h"
+                            VerticalTextAlignment="Center"
+                            TextColor="{StaticResource DarkGray}"
+                            Grid.Column="3" />
+
+                     <Label Grid.Row="2"
+                            Grid.RowSpan="2"
+                            Padding="0,0,10,0"
+                            FontSize="{StaticResource Large}"
+                            Text="€ 30"
+                            VerticalTextAlignment="Center"
+                            HorizontalTextAlignment="Center"
+                            TextColor="{StaticResource PrimaryBlue}"
+                            Grid.Column="4" />
+                  </Grid>
+               </Frame>
+               <Frame Grid.Row="16"
+                      Grid.Column="0"
+                      Grid.ColumnSpan="2"
+                      CornerRadius="5"
+                      BackgroundColor="{StaticResource LightGray}"
+                      HeightRequest="40">
+                  <Grid ColumnDefinitions="*,auto"
+                        RowDefinitions="*,*">
+                     <Label Text="Total price € 430"
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            FontFamily="{StaticResource SemiBoldFont}" />
+                     <Label Text="VAT included"
+                            Grid.Row="1"
+                            Grid.Column="0"
+                            TextColor="{StaticResource DarkGray}" />
+                     <Frame CornerRadius="5"
+                            Padding="7"
+                            BackgroundColor="{StaticResource PrimaryBlue}"
+                            Grid.Column="1"
+                            Grid.Row="0"
+                            Grid.RowSpan="2">
+                        <Label Text="Next"
+                               HorizontalTextAlignment="Center"
+                               VerticalTextAlignment="Center"
+                               TextColor="{StaticResource White}" />
+                     </Frame>
+                  </Grid>
+               </Frame>
+            </Grid>
+            <Grid x:Name="OtherGrid"
+                  Grid.Row="6"
+                  Grid.RowSpan="2"
+                  IsVisible="false">
+               <Label Text="No data"
+                      HorizontalTextAlignment="Center"
+                      VerticalTextAlignment="Center" />
+            </Grid>
+         </Grid>
+      </ScrollView>
+   </ContentPage.Content>
+</base:BasePage>
